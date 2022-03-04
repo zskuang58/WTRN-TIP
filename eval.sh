@@ -9,5 +9,5 @@ python main.py --save_dir ./eval/CUFED/WTRN \
                --eval_save_results False \
                --num_workers 4 \
                --dataset CUFED \
-               --dataset_dir /home/lab426/Codes/Codes/WTRN/ \
-               --model_path /home/lab426/Codes/WTRN/WTRN.pth
+               --dataset_dir /home/lab426/Codes/WTRN-TIP/dataset/CUFED \
+               --model_path /home/lab426/Codes/WTRN-TIP/WTRN.pth

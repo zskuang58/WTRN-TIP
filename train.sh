@@ -7,7 +7,7 @@ python main.py --save_dir ./train/CUFED/WTRN-allloss \
                --num_gpu 1 \
                --num_workers 9 \
                --dataset CUFED \
-               --dataset_dir /home/lab426/Codes/Reference-SR/dataset/CUFED \
+               --dataset_dir /home/lab426/Codes/WTRN_TIP/dataset/CUFED \
                --n_feats 64 \
                --lr_rate 1e-4 \
                --lr_rate_dis 1e-4 \
