@@ -6,7 +6,7 @@ from utils import MeanShift
 class Vgg19(torch.nn.Module):
     def __init__(self, requires_grad=False, rgb_range=1):
         super(Vgg19, self).__init__()
-        
+
         vgg_pretrained_features = models.vgg19(pretrained=True).features
 
         self.slice1 = torch.nn.Sequential()
@@ -16,7 +16,7 @@ class Vgg19(torch.nn.Module):
         if not requires_grad:
             for param in self.slice1.parameters():
                 param.requires_grad = False
-        
+
         vgg_mean = (0.485, 0.456, 0.406)
         vgg_std = (0.229 * rgb_range, 0.224 * rgb_range, 0.225 * rgb_range)
         self.sub_mean = MeanShift(rgb_range, vgg_mean, vgg_std)

@@ -1,5 +1,6 @@
 import argparse
 
+
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
         return True
@@ -8,35 +9,37 @@ def str2bool(v):
     else:
         raise argparse.ArgumentTypeError('Boolean value expected.')
 
+
 parser = argparse.ArgumentParser(description='WTRN')
 
-### log setting
+# log setting
 parser.add_argument('--save_dir', type=str, default='save_dir',
                     help='Directory to save log, arguments, models and images')
 parser.add_argument('--reset', type=str2bool, default=False,
                     help='Delete save_dir to create a new one')
-parser.add_argument('--log_file_name', type=str, default='TTSR.log',
+parser.add_argument('--log_file_name', type=str, default='WTRN.log',
                     help='Log file name')
-parser.add_argument('--logger_name', type=str, default='TTSR',
+parser.add_argument('--logger_name', type=str, default='WTRN',
                     help='Logger name')
 
-### device setting
+# device setting
 parser.add_argument('--cpu', type=str2bool, default=False,
                     help='Use CPU to run code')
 parser.add_argument('--num_gpu', type=int, default=1,
                     help='The number of GPU used in training')
 
-### dataset setting
+# dataset setting
 parser.add_argument('--dataset', type=str, default='CUFED',
                     help='Which dataset to train and test')
-parser.add_argument('--dataset_dir', type=str, default='/home/v-fuyang/Data/CUFED/',
+parser.add_argument('--dataset_dir', type=str,
+                    default='/home/v-fuyang/Data/CUFED/',
                     help='Directory of dataset')
 
-### dataloader setting
+# dataloader setting
 parser.add_argument('--num_workers', type=int, default=4,
                     help='The number of workers when loading data')
 
-### model setting
+# model setting
 parser.add_argument('--which_model', type=str, required=True,
                     help='which model to use')
 parser.add_argument('--num_res_blocks', type=str, default='16+16+8+4',
@@ -46,15 +49,18 @@ parser.add_argument('--n_feats', type=int, default=64,
 parser.add_argument('--res_scale', type=float, default=1.,
                     help='Residual scale')
 
-### loss setting
+# loss setting
 parser.add_argument('--GAN_type', type=str, default='WGAN_GP',
                     help='The type of GAN used in training')
 parser.add_argument('--GAN_k', type=int, default=2,
-                    help='Training discriminator k times when training generator once')
+                    help='Training discriminator k times when training \
+                        generator once')
 parser.add_argument('--tpl_use_S', type=str2bool, default=False,
-                    help='Whether to multiply soft-attention map in transferal perceptual loss')
+                    help='Whether to multiply soft-attention map in \
+                        transferal perceptual loss')
 parser.add_argument('--tpl_type', type=str, default='l2',
-                    help='Which loss type to calculate gram matrix difference in transferal perceptual loss [l1 / l2]')
+                    help='Which loss type to calculate gram matrix difference in \
+                        transferal perceptual loss [l1 / l2]')
 parser.add_argument('--rec_w', type=float, default=1.,
                     help='The weight of reconstruction loss')
 parser.add_argument('--per_w', type=float, default=0,
@@ -64,7 +70,7 @@ parser.add_argument('--tpl_w', type=float, default=0,
 parser.add_argument('--adv_w', type=float, default=0,
                     help='The weight of adversarial loss')
 
-### optimizer setting
+# optimizer setting
 parser.add_argument('--beta1', type=float, default=0.9,
                     help='The beta1 in Adam optimizer')
 parser.add_argument('--beta2', type=float, default=0.999,
@@ -82,15 +88,16 @@ parser.add_argument('--decay', type=float, default=999999,
 parser.add_argument('--gamma', type=float, default=0.5,
                     help='Learning rate decay factor for step decay')
 
-### training setting
+# training setting
 parser.add_argument('--batch_size', type=int, default=9,
                     help='Training batch size')
 parser.add_argument('--train_crop_size', type=int, default=40,
                     help='Training data crop size')
 parser.add_argument('--scale', type=int, default=4,
-                    help='Upsampling scale')                    
+                    help='Upsampling scale')
 parser.add_argument('--num_init_epochs', type=int, default=2,
-                    help='The number of init epochs which are trained with only reconstruction loss')
+                    help='The number of init epochs which are trained \
+                        with only reconstruction loss')
 parser.add_argument('--num_epochs', type=int, default=50,
                     help='The number of training epochs')
 parser.add_argument('--print_every', type=int, default=1,
@@ -103,8 +110,8 @@ parser.add_argument('--save_model', type=str2bool, default=True,
                     help='whether to save model')
 parser.add_argument('--seed', type=int, default=0,
                     help='random seed')
-                    
-### evaluate / test / finetune setting
+
+# evaluate / test / finetune setting
 parser.add_argument('--eval', type=str2bool, default=False,
                     help='Evaluation mode')
 parser.add_argument('--eval_save_results', type=str2bool, default=False,

@@ -1,4 +1,4 @@
-### training TTSR
+### training WTRN
 CUDA_VISIBLE_DEVICES=0 \
 python main.py --save_dir ./train/CUFED/WTRN-allloss \
                --reset True \
@@ -26,9 +26,9 @@ python main.py --save_dir ./train/CUFED/WTRN-allloss \
 
 # ### training WTRN-rec
 #CUDA_VISIBLE_DEVICES=0 \
-# python main.py --save_dir ./train/CUFED/TTSR-rec \
+# python main.py --save_dir ./train/CUFED/WTRN-rec \
 #                --reset True \
-#                --which_model Unet43_res_crossinfo \
+#                --which_model WTRN \
 #                --log_file_name train.log \
 #                --num_gpu 1 \
 #                --num_workers 9 \

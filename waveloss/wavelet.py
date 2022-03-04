@@ -1,3 +1,9 @@
+"""wavelet pool.
+
+    Paper: Photorealistic Style Transfer via Wavelet Transforms
+    Ref git repo: https://github.com/clovaai/WCT2.git.
+
+"""
 import torch
 import torch.nn as nn
 import numpy as np
@@ -42,15 +48,14 @@ def get_wav(in_channels, pool=True):
     HL.weight.requires_grad = False
     HH.weight.requires_grad = False
 
-    LL.weight.data = filter_LL.float().unsqueeze(0).expand(in_channels, -1, -1, -1)
-    LH.weight.data = filter_LH.float().unsqueeze(0).expand(in_channels, -1, -1, -1)
-    HL.weight.data = filter_HL.float().unsqueeze(0).expand(in_channels, -1, -1, -1)
-    HH.weight.data = filter_HH.float().unsqueeze(0).expand(in_channels, -1, -1, -1)
-    
-    # LL = filter_LL.float().unsqueeze(0).expand(in_channels, -1, -1, -1)
-    # LH = filter_LH.float().unsqueeze(0).expand(in_channels, -1, -1, -1)
-    # HL = filter_HL.float().unsqueeze(0).expand(in_channels, -1, -1, -1)
-    # HH = filter_HH.float().unsqueeze(0).expand(in_channels, -1, -1, -1)
+    LL.weight.data = filter_LL.float()\
+        .unsqueeze(0).expand(in_channels, -1, -1, -1)
+    LH.weight.data = filter_LH.float()\
+        .unsqueeze(0).expand(in_channels, -1, -1, -1)
+    HL.weight.data = filter_HL.float()\
+        .unsqueeze(0).expand(in_channels, -1, -1, -1)
+    HH.weight.data = filter_HH.float()\
+        .unsqueeze(0).expand(in_channels, -1, -1, -1)
 
     return LL, LH, HL, HH
 
@@ -63,10 +68,9 @@ class WavePool(nn.Module):
     def forward(self, x):
         LL = self.LL(x)
         LH = self.LH(x)
-        #print(LH.shape)
         HL = self.HL(x)
         HH = self.HH(x)
-        return LL , torch.cat((LH, HL, HH), 1)
+        return LL, torch.cat((LH, HL, HH), 1)
 
 
 class WaveUnpool(nn.Module):
@@ -74,14 +78,20 @@ class WaveUnpool(nn.Module):
         super(WaveUnpool, self).__init__()
         self.in_channels = in_channels
         self.option_unpool = option_unpool
-        self.LL, self.LH, self.HL, self.HH = get_wav(self.in_channels, pool=False)
+        self.LL, self.LH, self.HL, self.HH = get_wav(
+            self.in_channels, pool=False
+        )
 
     def forward(self, LL, LH, HL, HH, original=None):
         if self.option_unpool == 'sum':
-            return self.LL(LL) + self.LH(LH) + self.HL(HL) + self.HH(HH)
+            return self.LL(LL) + self.LH(LH) + \
+                self.HL(HL) + self.HH(HH)
         elif self.option_unpool == 'cat5' and original is not None:
-            return torch.cat([self.LL(LL), self.LH(LH), self.HL(HL), self.HH(HH), original], dim=1)
+            return torch.cat([self.LL(LL), self.LH(LH),
+                              self.HL(HL), self.HH(HH), original], dim=1)
         elif self.option_unpool == 'cat5' and original is None:
-            return torch.cat([LL, self.LH(LH), self.HL(HL), self.HH(HH)], dim=1)
+            return torch.cat([LL, self.LH(LH),
+                              self.HL(HL), self.HH(HH)], dim=1)
         else:
             raise NotImplementedError
+
