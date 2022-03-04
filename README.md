@@ -52,7 +52,7 @@ Image Super-Resolution
 
 ## Acknowledgement
 
-We borrow some codes from [TTSR](https://github.com/researchmm/TTSR.git) and [WCT2](https://github.com/clovaai/WCT2.git). We thank the authors for their great work.
+We borrow some codes from [TTSR](https://github.com/researchmm/TTSR) and [WCT2](https://github.com/clovaai/WCT2). We thank the authors for their great work.
 
 ## Citation
 
