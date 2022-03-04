@@ -13,6 +13,10 @@ Nankai University
 
 ![](figs/WTRN_pipeline.png)
 
+## TODO
+- [ ] Update arXiv link 
+- [ ] Update pretrained models
+
 ## Dependencies
 
 * python >= 3.7
