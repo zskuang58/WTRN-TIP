@@ -1,6 +1,17 @@
 # WTRN-TIP
-Official PyTorch implementation of our TIP paper Wavelet-Based Texture Reformation Network for
-Image Super-Resolution
+Official PyTorch implementation of our TIP2022 paper Wavelet-Based Texture Reformation Network for
+Image Super-Resolution [arXiv]
+
+[Zhen Li](https://github.com/Paper99)\*, [Zeng-Sheng Kuang](https://github.com/zskuang58)\*, [Zuo-Liang Zhu](https://github.com/NK-CS-ZZL), Hong-Peng Wang, Xiu-Li Shao (\* denotes equal contribution)
+
+Nankai University
+
+---
+
+> Most reference-based image super-resolution (RefSR) methods directly leverage the raw features extracted from a pretrained VGG encoder to transfer the matched texture information from a reference image to a low-resolution image. We argue that simply operating on these raw features neglects the influence of irrelevant and redundant information and the importance of abundant high-frequency representations, leading to undesirable texture matching and transfer results. Taking the advantages of wavelet transformation, which represents the contextual and textural information of features at different scales, we propose a **W**avelet-based **T**exture **R**eformation **N**etwork (**WTRN**) for RefSR. We first decompose the extracted texture features into low-frequency and high-frequency sub-bands and conduct feature matching on the low-frequency component. Based on the correlation map obtained from the feature matching process, we then separately swap and transfer wavelet-domain features at different stages of the network. Furthermore, a wavelet-based texture adversarial loss is proposed to make the network generate more visually plausible textures. Experiments on four benchmark datasets demonstrate that our proposed method outperforms previous RefSR methods both quantitatively and qualitatively.
+
+
+![](figs/WTRN_pipeline.png)
 
 ## Dependencies
 
@@ -21,7 +32,7 @@ Image Super-Resolution
     └── test  
     ```
 
-## Dowmload codes
+## Download codes
 
 1. Clone this repo
     ```
@@ -50,14 +61,25 @@ Image Super-Resolution
     ```
 1. The training results are in the "save_dir" (default: `./train/CUFED/WTRN`)
 
+## Results
+### Quantitative results
+![](figs/quantitative_results.png)
+
+### Visual results
+![](figs/visual_results.png)
+
 ## Acknowledgement
 
-We borrow some codes from [TTSR](https://github.com/researchmm/TTSR) and [WCT2](https://github.com/clovaai/WCT2). We thank the authors for their great work.
+We borrow some codes from [TTSR](https://github.com/researchmm/TTSR) and [WCT2](https://github.com/clovaai/WCT2). We thank the authors for their great works.
 
 ## Citation
 
 Please consider citing our paper in your publications if it is useful for your research.
 ```
-### todo
-
+@article{li2022wtrn,
+    author = {Li, Zhen and Kuang, Zeng-Sheng and Zhu, Zuo-Liang and Wang, Hong-Peng and Shao, Xiu-Li},
+    title = {Wavelet-Based Texture Reformation Network for Image Super-Resolution},
+    journal = {IEEE Transactions on Image Processing},
+    year= {2022}
+}
 ```
