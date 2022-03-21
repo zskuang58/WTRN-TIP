@@ -84,6 +84,8 @@ Please consider citing our paper in your publications if it is useful for your r
     author = {Li, Zhen and Kuang, Zeng-Sheng and Zhu, Zuo-Liang and Wang, Hong-Peng and Shao, Xiu-Li},
     title = {Wavelet-Based Texture Reformation Network for Image Super-Resolution},
     journal = {IEEE Transactions on Image Processing},
-    year= {2022}
+    year= {2022},
+    doi={10.1109/TIP.2022.3160072}
+}
 }
 ```
