@@ -87,5 +87,4 @@ Please consider citing our paper in your publications if it is useful for your r
     year= {2022},
     doi={10.1109/TIP.2022.3160072}
 }
-}
 ```
