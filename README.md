@@ -15,7 +15,6 @@ Nankai University
 
 ## TODO
 - [ ] Update arXiv link 
-- [ ] Update pretrained models
 
 ## Dependencies
 
@@ -55,6 +54,12 @@ Nankai University
     sh eval.sh
     ```
 1. Evaluation results are in "save_dir" (default: `./eval/CUFED/WTRN`)
+
+## Model
+Pre-trained models can be downloaded from [baidu cloud](https://pan.baidu.com/s/1hF_9SIQSGw8ajnMd4SBxcA)(s751), [google drive](https://drive.google.com/drive/folders/106EEELcaZQ4U1XEhcDegRgJYfO0VdUWZ?usp=sharing).
+* *WTRN_rec.pt*: trained with only reconstruction loss
+* *WTRN.pt*: trained with all losses
+
 
 ## Training
 
