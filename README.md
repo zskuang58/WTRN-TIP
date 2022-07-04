@@ -13,8 +13,6 @@ Nankai University
 
 ![](figs/WTRN_pipeline.png)
 
-## TODO
-- [ ] Update arXiv link 
 
 ## Dependencies
 
